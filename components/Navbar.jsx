@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineMail } from "react-icons/ai";
@@ -8,35 +8,51 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
+    const [shadow, setShadow] = useState(false);
 
     const toggleNav = () => {
         setNav(!nav);
     };
+    {/*
+    removes the shadow on the navbar when the user is at the top of the page
+    */}
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 90) {
+                setShadow(true);
+            } else {
+                setShadow(false);
+            }
+        };
+            window.addEventListener("scroll", handleScroll);
+    }, []);
     return (
-        <div className="fixed w-full h-20 shadow-xl z-[100]">
+        <div className={shadow ? "fixed w-full h-20 shadow-xl z-[100]":"fixed w-full h-20 z-[100]"}>
         <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
-            {/*Lazy Image*/}
-            <Image
-            src="/../public/assets/"
-            alt="/"
-            width="125"
-            height="50"
-            />
+            <Link href='/'>
+                {/*Lazy Image*/}
+                <Image
+                src="/../public/assets/"
+                alt="/"
+                width="125"
+                height="50"
+                />
+            </Link>
             <div>
                 <ul className='hidden md:flex'>
                     <Link href='/'>
                         <li className='ml-10 text-sm uppercase hover:border-t'>Home</li>
                     </Link>
-                    <Link href='/'>
+                    <Link href='/#about'>
                         <li className='ml-10 text-sm uppercase hover:border-t'>About</li>
                     </Link>
-                    <Link href='/'>
+                    <Link href='/#skills'>
                         <li className='ml-10 text-sm uppercase hover:border-t'>Skills</li>
                     </Link>
-                    <Link href='/'>
+                    <Link href='/#projects'>
                         <li className='ml-10 text-sm uppercase hover:border-t'>Projects</li>
                     </Link>
-                    <Link href='/'>
+                    <Link href='/#contact'>
                         <li className='ml-10 text-sm uppercase hover:border-t'>Contact</li>
                     </Link>
                 </ul>
@@ -64,16 +80,16 @@ const Navbar = () => {
                         <Link href='/'>
                             <li className='py-4 text-sm'>Home</li>
                         </Link>
-                        <Link href='/'>
+                        <Link href='/#about'>
                             <li className='py-4 text-sm'>About</li>
                         </Link>
-                        <Link href='/'>
+                        <Link href='/#skills'>
                             <li className='py-4 text-sm'>Skills</li>
                         </Link>
-                        <Link href='/'>
+                        <Link href='/#projects'>
                             <li className='py-4 text-sm'>Projects</li>
                         </Link>
-                        <Link href='/'>
+                        <Link href='/#contact'>
                             <li className='py-4 text-sm'>Contact</li>
                         </Link>
                     </ul>
