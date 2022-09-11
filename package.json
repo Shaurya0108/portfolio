@@ -1,5 +1,4 @@
 {
-  "homepage": "https://Shaurya0108.github.io/P",
   "name": "portfolio-nextjs",
   "version": "0.1.0",
   "private": true,
@@ -7,15 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint": "next lint"
   },
   "dependencies": {
     "autoprefixer": "^10.4.8",
     "gh-pages": "^4.0.0",
     "next": "12.3.0",
-    "postcss": "^8.4.16",
+    "postcss": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
